@@ -51,7 +51,7 @@ pipeline{
         stage("deploy"){
             when{
                 expression{
-                    echo "deploying version ${params.VERSION[0]}"
+                    echo "deploying version ${params.VERSION}"
                 }
             }
             steps{
