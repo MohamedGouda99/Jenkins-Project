@@ -1,11 +1,29 @@
 //CODE_CHANGES = getGitChanges()
 pipeline{
     agent any
-    environment{
-        NEW_VERSION = '1.3.0'
+
+
+    parameters{
+        string(name: 'VERSION', default: '', description: 'version to deploy on prod')
+        choice(name: 'VERSION', choices: ['1.1.0','1.2.0','1.3.0'], description: '')
+        booleanParam(name: 'executeTest', defaultValue: true, description: '')
     }
+
+    // tools{
+    //     maven 'Maven'
+    // }
+
+    // environment{
+    //     NEW_VERSION = '1.3.0'
+    //     SERVER_CREDENTIALS = credentials('server-credentials')
+    // }
     stages{
         stage("build"){
+            when{
+                expression{
+                    params.executeTest
+                }
+            }
             // when{
             //     expression{
             //         BRANCH_NAME == 'dev' && CODE_CHANGES == true
@@ -31,9 +49,24 @@ pipeline{
             }
         }
         stage("deploy"){
+            when{
+                expression{
+                    echo "deploying version ${params.VERSION[0]}"
+                }
+            }
             steps{
                 script{
                     echo "deploying the application........"
+                    // echo "deploy with credentials ${SERVER_CREDENTIALS}"
+                    // sh "${SERVER_CREDENTIALS}"
+
+
+                    // withCredentials([
+                    //     usernamePassword(credentials: 'SERVER_CREDENTIALS', usernameVariable: USER, passwordVariable: PWD)
+                    // ]){
+                    //     sh "some script ${USER} ${PWD}"
+                    // }
+
                 }
             }
         }
