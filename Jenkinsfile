@@ -13,9 +13,9 @@ pipeline{
     //     maven 'Maven'
     // }
 
-    // environment{
+    // ENVIRONMENT{
     //     NEW_VERSION = '1.3.0'
-    //     SERVER_CREDENTIALS = credentials('server-credentials')
+    //     SERVER_CREDENTIALS = CREDENTIALS('SERVER-CREDENTIALS')
     // }
     stages{
         stage("build"){
@@ -32,7 +32,7 @@ pipeline{
             steps{
                 script{
                     echo "building the application.........."
-                    echo "buildin new version ${NEW_VERSION}"
+                    echo "buildin new version1.3"
                 }
             }
         }
