@@ -13,10 +13,6 @@ def buildImage(){
         sh 'docker build -t gouda99/my-repo:jma-3.0 .'
         sh "docker login -u $USER -p $PASS"
         sh 'docker push gouda99/my-repo:jma-3.0'
-
     }
-
-    
-
 }
 
