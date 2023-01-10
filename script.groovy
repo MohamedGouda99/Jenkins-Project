@@ -15,4 +15,5 @@ def buildImage(){
         sh 'docker push gouda99/my-repo:jma-4.0'
     }
 }
+return this
 
