@@ -101,8 +101,8 @@ pipeline{
                         gv.buildImage()
                     }
                 }
-            }
         }
+        
         
         stage("deploying"){
             steps{
