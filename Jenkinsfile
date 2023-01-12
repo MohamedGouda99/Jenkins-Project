@@ -113,7 +113,7 @@ pipeline{
         stage("build image"){
             steps{
                 script{
-                        buildImage()
+                        buildImage 'gouda99/my-repo:jma-6.0'
                     }
                 }
         }

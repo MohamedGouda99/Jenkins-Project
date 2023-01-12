@@ -5,7 +5,7 @@
 // }
 
 def deploy(){
-    echo "deploy the application....."
+    echo "deploy the application for $BRANCH_NAME"
 }
 
 // def buildImage(){
