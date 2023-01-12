@@ -85,8 +85,10 @@
 
 
 
-
-@Library('jenkins-shared-library')
+library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
+    [$class: 'GitSCMSource', remote: 'https://gitlab.com/MohamedGouda99/jenkins-shared-library.git', credentialsId: 'github-credentials']
+)
+// @Library('jenkins-shared-library')
 def gv
 
 pipeline{
@@ -113,9 +115,9 @@ pipeline{
         stage("build image and push image"){
             steps{
                 script{
-                        buildImage 'gouda99/my-repo:jma-9.0'
+                        buildImage 'gouda99/my-repo:jma-11.0'
                         dockerLogin()
-                        dockerPush 'gouda99/my-repo:jma-9.0'
+                        dockerPush 'gouda99/my-repo:jma-11.0'
                     }
                 }
         }
