@@ -15,6 +15,6 @@ def deploy(){
 //         sh "docker login -u $USER -p $PASS"
 //         sh 'docker push gouda99/my-repo:jma-4.0'
 //     }
-}
+
 return this
 
