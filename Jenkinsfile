@@ -113,7 +113,9 @@ pipeline{
         stage("build image"){
             steps{
                 script{
-                        buildImage 'gouda99/my-repo:jma-7.0'
+                        buildImage 'gouda99/my-repo:jma-8.0'
+                        dockerLogin()
+                        dockerPush 'gouda99/my-repo:jma-8.0'
                     }
                 }
         }
