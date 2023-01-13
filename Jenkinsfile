@@ -45,7 +45,7 @@ pipeline{
                 }
             }
         }
-        stage("Commit version Update"){
+        stage("Commit version Update.."){
             steps{
                 script{
                     gv.commitVersion()
