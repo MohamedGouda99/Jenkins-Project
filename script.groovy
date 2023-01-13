@@ -24,5 +24,23 @@ def incrementVersion(){
         def version = matcher[0][1]
         env.IMAGE_NAME = "Jma-$version-$BUILD_NUMBER"
 }
+def commitVersion(){
+    echo "commit version update"
+    withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+        sh 'git config --global user.email "jenkins@example.com"'
+        sh 'git config --global user.name "jenkins"'
+        
+        sh 'git status'
+        sh 'git branch'
+        sh 'git config --list'
+
+        sh "git remote set-url origin https//${USER}:${PASS}@gitlab.com/MohamedGouda99/java-mvn-project.git"
+        sh 'git add .'
+        sh 'git commit -m "CI: Version Bump"'
+        sh 'git push origin HEAD:main'
+
+    }
+
+}
 return this
 
