@@ -38,7 +38,7 @@ pipeline{
                 script{
                         buildImage 'gouda99/my-repo:jma-12.0'
                         dockerLogin()
-                        dockerPush 'gouda99/my-repo:jma-12.0'
+                        dockerPush 'gouda99/my-repo:jma-1.0'
                     }
                 }
         }
