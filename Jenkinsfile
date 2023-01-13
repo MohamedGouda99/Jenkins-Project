@@ -1,7 +1,5 @@
-library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
-    [$class: 'GitSCMSource', remote: 'https://gitlab.com/MohamedGouda99/jenkins-shared-library.git', credentialsId: 'github-credentials']
-)
-// @Library('jenkins-shared-library')
+
+
 def gv
 
 pipeline{
@@ -10,14 +8,8 @@ pipeline{
         maven 'maven:3.8.7'
     }
     stages{
-        stage("Incerement Version"){
-            steps{
-                script{
-                    echo "Increment App Version..."
-                    incrementVersion()
-                }
-            }
-        }
+
+        
         stage("init"){
             steps{
                 script{
@@ -25,20 +17,30 @@ pipeline{
                 }
             }
         }
+
+
+        stage("increment version"){
+            steps{
+                script{
+                    gv.incrementVersion()
+                }
+            }
+        }
         stage("build jar"){
             steps{
                 script{
-                   buildJar()
+                   gv.buildJar()
+
                 }
             }
         }
         
-        stage("build image and push image"){
+
+        stage("build image"){
             steps{
                 script{
-                        buildImage 'gouda99/my-repo:jma-12.0'
-                        dockerLogin()
-                        dockerPush 'gouda99/my-repo:jma-1.0'
+                            gv.buildImage()
+
                     }
                 }
         }
@@ -51,6 +53,116 @@ pipeline{
                 }
             }
         }
+     
+
+
+        stage("Commit version Update.."){
+            steps{
+                script{
+                    gv.commitVersion()
+                }
+            }
+        }
     }
 }       
 
+
+
+
+
+
+
+
+
+
+
+// //CODE_CHANGES = getGitChanges()
+// pipeline{
+//     agent any
+
+
+//     parameters{
+//         string(name: 'VERSION', defaultValue: '', description: 'version to deploy on prod')
+//         choice(name: 'VERSION', choices: ['1.1.0','1.2.0','1.3.0'], description: '')
+//         booleanParam(name: 'executeTest', defaultValue: true, description: '')
+//     }
+
+//     // tools{
+//     //     maven 'Maven'
+//     // }
+
+//     // ENVIRONMENT{
+//     //     NEW_VERSION = '1.3.0'
+//     //     SERVER_CREDENTIALS = CREDENTIALS('SERVER-CREDENTIALS')
+//     // }
+//     stages{
+//         stage("build"){
+//             when{
+//                 expression{
+//                     params.executeTest
+//                 }
+//             }
+//             // when{
+//             //     expression{
+//             //         BRANCH_NAME == 'dev' && CODE_CHANGES == true
+//             //     }
+//             // }
+//             steps{
+//                 script{
+//                     echo "building the application.........."
+//                     echo "buildin new version1.3"
+//                 }
+//             }
+//         }
+//         stage("test"){
+//             // when{
+//             //     expression{
+//             //         BRANCH_NAME == 'dev' || BRANCH_NAME == 'main'
+//             //     }
+//             // }
+//             steps{
+//                 script{
+//                     echo "testing the application............"
+//                 }
+//             }
+//         }
+//         stage("deploy"){
+//             when{
+//                 expression{
+//                     echo "deploying version ${params.VERSION}"
+//                 }
+//             }
+//             steps{
+//                 script{
+//                     echo "deploying the application........"
+//                     // echo "deploy with credentials ${SERVER_CREDENTIALS}"
+//                     // sh "${SERVER_CREDENTIALS}"
+
+
+//                     // withCredentials([
+//                     //     usernamePassword(credentials: 'SERVER_CREDENTIALS', usernameVariable: USER, passwordVariable: PWD)
+//                     // ]){
+//                     //     sh "some script ${USER} ${PWD}"
+//                     // }
+
+//                 }
+//             }
+//         }
+//     }
+   
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> fac239f9d9f5e1c03376197d3963952c1303d091
