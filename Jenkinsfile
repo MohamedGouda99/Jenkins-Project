@@ -1,3 +1,61 @@
+def gv
+pipeline{
+    agent any
+    tools{
+        maven 'maven:3.8.7'
+    }
+    stages{
+        stage("increment version"){
+            steps{
+                script{
+                    echo "incrementing app version..."
+                }
+            }
+        }
+        stage("init"){
+            steps{
+                script{
+                    gv = load 'script.groovy'
+                }
+            }
+        }
+        stage("build jar"){
+            steps{
+                script{
+                   gv.buildJar()
+                }
+            }
+        }
+        
+        stage("build image"){
+            steps{
+                script{
+                            gv.buildImage()
+                    }
+                }
+        }
+        
+        
+        stage("deploying"){
+            steps{
+                script{
+                  gv.deploy()
+                }
+            }
+        }
+    }
+}       
+
+
+
+
+
+
+
+
+
+
+
 // //CODE_CHANGES = getGitChanges()
 // pipeline{
 //     agent any
@@ -86,46 +144,4 @@
 
 
 
-
-
-def gv
-pipeline{
-    agent any
-    tools{
-        maven 'maven:3.8.7'
-    }
-    stages{
-        stage("init"){
-            steps{
-                script{
-                    gv = load 'script.groovy'
-                }
-            }
-        }
-        stage("build jar"){
-            steps{
-                script{
-                   gv.buildJar()
-                }
-            }
-        }
-        
-        stage("build image"){
-            steps{
-                script{
-                            gv.buildImage()
-                    }
-                }
-        }
-        
-        
-        stage("deploying"){
-            steps{
-                script{
-                  gv.deploy()
-                }
-            }
-        }
-    }
-}       
 
