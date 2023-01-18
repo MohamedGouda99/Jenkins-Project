@@ -1,5 +1,3 @@
-
-
 def gv
 
 pipeline{
@@ -164,5 +162,3 @@ pipeline{
 
 
 
-
->>>>>>> fac239f9d9f5e1c03376197d3963952c1303d091
