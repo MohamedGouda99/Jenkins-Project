@@ -9,9 +9,7 @@ pipeline{
     tools{
         maven 'maven-3.8.7'
     }
-    environment{
-        IMAGE_NAME = 'gouda99/my-repo:jma-500.0'
-    }
+
     stages{
         // stage("Incerement Version"){
         //     steps{
