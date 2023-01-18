@@ -6,9 +6,10 @@
 
 def deploy(){
     
-    def dockerCmd = 'docker run -d -p 8080:8080 nanajanashia/k8s-demo-app:v1.0'
+    def dockerComposeCmd = 'docker-compose -f docker-compose.yaml up --detach'
     sshagent(['ec2-server-key']) {
-        sh "ssh -o StrictHostKeyChecking=no ubuntu@54.87.29.255 ${dockerCmd}"
+        sh "scp docker-compose.yaml ubuntu@54.87.29.255:/home/ubuntu"
+        sh "ssh -o StrictHostKeyChecking=no ubuntu@54.87.29.255 ${dockerComposeCmd}"
     }
 }
 
