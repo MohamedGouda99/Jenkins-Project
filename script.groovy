@@ -7,10 +7,11 @@
 def deploy(){
     
     def shellCmd = "bash ./server-cmds.sh ${IMAGE_NAME}"
+    def ec2_instance = "ubuntu@54.87.29.255"
 
     sshagent(['ec2-server-key']) {
-        sh "scp server-cmds.sh ubuntu@54.87.29.255:/home/ubuntu"
-        sh "scp docker-compose.yaml ubuntu@54.87.29.255:/home/ubuntu"
+        sh "scp server-cmds.sh ${ec2_instance}:/home/ubuntu"
+        sh "scp docker-compose.yaml ${ec2_instance}:/home/ubuntu"
         sh "ssh -o StrictHostKeyChecking=no ubuntu@54.87.29.255 ${shellCmd}"
     }
 }
