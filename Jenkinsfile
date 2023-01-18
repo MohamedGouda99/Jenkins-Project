@@ -10,14 +10,14 @@ pipeline{
         maven 'maven-3.8.7'
     }
     stages{
-        stage("Incerement Version"){
-            steps{
-                script{
-                    echo "Increment App Version..."
-                    incrementVersion()
-                }
-            }
-        }
+        // stage("Incerement Version"){
+        //     steps{
+        //         script{
+        //             echo "Increment App Version..."
+        //             incrementVersion()
+        //         }
+        //     }
+        // }
         stage("init"){
             steps{
                 script{
