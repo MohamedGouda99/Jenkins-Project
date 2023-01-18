@@ -6,7 +6,8 @@
 
 def deploy(){
     
-    def shellCmd = "bash ./server-cmds.sh"
+    def shellCmd = "bash ./server-cmds.sh ${IMAGE_NAME}"
+
     sshagent(['ec2-server-key']) {
         sh "scp server-cmds.sh ubuntu@54.87.29.255:/home/ubuntu"
         sh "scp docker-compose.yaml ubuntu@54.87.29.255:/home/ubuntu"

@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1452fd02-4167-4f89-9175-8f61be488703" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/script.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-cmds.sh" beforeDir="false" afterPath="$PROJECT_DIR$/server-cmds.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

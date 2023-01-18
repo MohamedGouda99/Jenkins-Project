@@ -9,6 +9,9 @@ pipeline{
     tools{
         maven 'maven-3.8.7'
     }
+    environment{
+        IMAGE_NAME = 'gouda99/my-repo:jma-500.0'
+    }
     stages{
         // stage("Incerement Version"){
         //     steps{
@@ -36,9 +39,9 @@ pipeline{
         stage("build image and push image"){
             steps{
                 script{
-                        buildImage 'gouda99/my-repo:jma-500.0'
+                        buildImage(env.IMAGE_NAME)
                         dockerLogin()
-                        dockerPush 'gouda99/my-repo:jma-500.0'
+                        dockerPush(env.IMAGE_NAME)
                     }
                 }
         }
