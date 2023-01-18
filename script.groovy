@@ -5,7 +5,10 @@
 // }
 
 def deploy(){
-    echo "deploy the application for my..... $BRANCH_NAME"
+    def dockerCmd = 'docker run -d -p 3080:3080 gouda99/my-repo:jma-500.0'
+    sshagent(['ec2-server-key']) {
+        sh "ssh -o StrictHostKeyChecking=no ubuntu@54.87.29.255 ${dockerCmd}"
+    }
 }
 
 // def buildImage(){
