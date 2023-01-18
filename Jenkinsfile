@@ -36,9 +36,9 @@ pipeline{
         stage("build image and push image"){
             steps{
                 script{
-                        buildImage 'gouda99/my-repo:jma-12.0'
+                        buildImage 'gouda99/my-repo:jma-500.0'
                         dockerLogin()
-                        dockerPush 'gouda99/my-repo:jma-1.0'
+                        dockerPush 'gouda99/my-repo:jma-500.0'
                     }
                 }
         }
