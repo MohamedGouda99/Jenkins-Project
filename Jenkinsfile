@@ -47,6 +47,7 @@ pipeline{
         stage("deploying"){
             steps{
                 script{
+                
                   gv.deploy()
                 }
             }
