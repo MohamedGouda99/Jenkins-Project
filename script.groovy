@@ -6,10 +6,11 @@
 
 def deploy(){
     
-    def dockerComposeCmd = 'docker-compose -f docker-compose.yaml up --detach'
+    def shellCmd = "bash ./server-cmds.sh"
     sshagent(['ec2-server-key']) {
+        sh "scp server-cmds.sh ubuntu@54.87.29.255:/home/ubuntu"
         sh "scp docker-compose.yaml ubuntu@54.87.29.255:/home/ubuntu"
-        sh "ssh -o StrictHostKeyChecking=no ubuntu@54.87.29.255 ${dockerComposeCmd}"
+        sh "ssh -o StrictHostKeyChecking=no ubuntu@54.87.29.255 ${shellCmd}"
     }
 }
 
