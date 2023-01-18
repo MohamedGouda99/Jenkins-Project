@@ -17,15 +17,15 @@ def buildImage(){
         sh "docker push gouda99/my-repo:${IMAGE_NAME}"
     }
 }
-def incrementVersion(){
-    echo "incrementing app version..."
-    sh "mvn build-helper:parse-version versions:set \
-        -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} versions:commit"
+// def incrementVersion(){
+//     echo "incrementing app version..."
+//     sh "mvn build-helper:parse-version versions:set \
+//         -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} versions:commit"
 
-        def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
-        def version = matcher[0][1]
-        env.IMAGE_NAME = "Jma-$version-$BUILD_NUMBER"
-}
+//         def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+//         def version = matcher[0][1]
+//         env.IMAGE_NAME = "Jma-$version-$BUILD_NUMBER"
+// }
 def commitVersion(){
     echo "commit version update"
     withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
