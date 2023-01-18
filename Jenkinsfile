@@ -26,6 +26,13 @@ pipeline{
                 }
             }
         }
+        stage("increment Version"){
+            steps{
+                script{
+                    gv.incrementVersion()
+                }
+            }
+        }
         stage("build jar"){
             steps{
                 script{
@@ -50,6 +57,13 @@ pipeline{
                 script{
                 
                   gv.deploy()
+                }
+            }
+        }
+        stage("commit new image version"){
+            steps{
+                script{
+                    gv.commitVersion()
                 }
             }
         }
