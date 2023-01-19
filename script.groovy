@@ -37,7 +37,7 @@ def commitVersion(){
         sh "git remote set-url origin https://${USER}:${PASS}@gitlab.com/MohamedGouda99/java-mvn-project.git"
         sh 'git add .'
         sh 'git commit -m "CI: Version Bump"'
-        sh 'git push origin HEAD:main'
+        sh 'git push origin HEAD:jenkins-share-lib'
 
     }
 
