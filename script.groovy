@@ -15,7 +15,7 @@ def deploy(){
         sh "ssh -o StrictHostKeyChecking=no ubuntu@54.87.29.255 ${shellCmd}"
     }
 }
-def incrementVersion(){
+/*def incrementVersion(){
     echo "incrementing app version..."
     sh "mvn build-helper:parse-version versions:set \
           -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} versions:commit"
@@ -23,7 +23,7 @@ def incrementVersion(){
     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
     def version = matcher[0][1]
     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
-}
+}*/
 def commitVersion(){
     echo "commit version update"
     withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
