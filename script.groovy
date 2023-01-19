@@ -22,7 +22,7 @@ def incrementVersion(){
 
     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
     def version = matcher[0][1]
-    env.IMAGE_NAME = "Jma-$version-$BUILD_NUMBER"
+    env.IMAGE_NAME = "jma-$version-$BUILD_NUMBER"
 }
 def commitVersion(){
     echo "commit version update"
