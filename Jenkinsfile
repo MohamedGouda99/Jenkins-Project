@@ -11,13 +11,6 @@ pipeline{
     }
 
     stages{
-        stage("increment Version"){
-            steps{
-                script{
-                    gv.incrementVersion()
-                }
-            }
-        }
         stage("init"){
             steps{
                 script{
@@ -25,7 +18,13 @@ pipeline{
                 }
             }
         }
-
+        stage("increment Version"){
+            steps{
+                script{
+                    gv.incrementVersion()
+                }
+            }
+        }
         stage("build jar"){
             steps{
                 script{
