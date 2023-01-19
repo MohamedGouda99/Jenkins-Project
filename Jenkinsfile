@@ -11,21 +11,6 @@ pipeline{
     }
 
     stages{
-        // stage("Incerement Version"){
-        //     steps{
-        //         script{
-        //             echo "Increment App Version..."
-        //             incrementVersion()
-        //         }
-        //     }
-        // }
-        stage("init"){
-            steps{
-                script{
-                    gv = load 'script.groovy'
-                }
-            }
-        }
         stage("increment Version"){
             steps{
                 script{
@@ -33,6 +18,14 @@ pipeline{
                 }
             }
         }
+        stage("init"){
+            steps{
+                script{
+                    gv = load 'script.groovy'
+                }
+            }
+        }
+
         stage("build jar"){
             steps{
                 script{
