@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1452fd02-4167-4f89-9175-8f61be488703" name="Changes" comment="" />
+    <list default="true" id="1452fd02-4167-4f89-9175-8f61be488703" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/script.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/script.groovy" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
